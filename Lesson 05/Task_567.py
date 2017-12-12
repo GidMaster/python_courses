@@ -4,7 +4,8 @@ Smart multiplies
 
 from random import randint
 
-number = randint(1,100000000)
+number = randint(1, 100000000)
+
 print(f'Число: {number}')
 result = 1
 number_to_string = str(number)

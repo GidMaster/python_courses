@@ -5,11 +5,11 @@ Didn't undestand where loops?
 
 words = ["bright aright", "ok"]
 
-delemiter = ','
+delimiter = ','
 
-main_string = delemiter.join(words)
+main_string = delimiter.join(words)
 
-main_string.lower()
+main_string = main_string.lower()
 main_string =  main_string.replace('right', 'left')
 
 print(main_string)
