@@ -2,7 +2,7 @@
 Median
 """
 
-elements = [1, 300, 2, 200, 300, 1]
+elements = [1, 300, 2, 300, 1]
 
 elements.sort()
 
