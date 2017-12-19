@@ -1,6 +1,7 @@
 """
 Lined words
 """
+import re
 
 def checker(charapter):
     
@@ -37,9 +38,10 @@ def liner(word):
     else:
         return 0
 
-text = "A quantity of striped words."
+text = "Dog,cat,mouse,bird.Human."
 
-vocabulary = text.split()
+vocabulary = re.split(' |\.|,|\n', text)
+print(vocabulary)
 
 counter_word = 0
 
