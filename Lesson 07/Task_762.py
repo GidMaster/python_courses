@@ -1,7 +1,6 @@
 """
 Roman digits
 """
-
 def romanize(n):
     result = ''
     for arabic, roman in zip((1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1),
@@ -12,7 +11,7 @@ def romanize(n):
     return result
 
 def main():    
-    print(romanize(3999))
+    print(romanize(4))
 
 if __name__ == '__main__':
     main()
