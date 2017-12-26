@@ -2,29 +2,22 @@
 Cipher
 """
 
-import numpy
-
-
-def rotator_plus90(grille):
+def rotate_plus90(grille):
     grille_90 = tuple(zip(*grille[::-1]))
-
-    return grille_90
-
-def make_string(grille):
-    pass
-
+    grille_as_string = tuple(''.join(row) for row in grille_90 )
+    return grille_as_string
 
 def decrypt(crypted_text, cipher_grille):
-    cleartext = []
-    for i in range(3):
+    cleartext = ''
+    for i in range(4):
         crypted_row = ''
         cipher_row = ''
         crypted_row = crypted_row.join(crypted_text)
         cipher_row  = cipher_row.join(cipher_grille)
         zipped_row = tuple(zip(cipher_row, crypted_row))
-        part_clear_text = [element[1] for element in zipped_row if element[0] is 'X' ]
-        cleartext.append(part_clear_text)
-        cipher_grille = rotator_plus90(cipher_grille)
+        part_clear_text = (element[1] for element in zipped_row if element[0] is 'X')
+        cleartext += ''.join(part_clear_text)
+        cipher_grille = rotate_plus90(cipher_grille)
     return cleartext
 
 def main():
@@ -32,20 +25,14 @@ def main():
                     '..X.',
                     'X..X',
                     '....')
-for row in cipher:
-    print(row)
 
     crypted_text = ('itdf',
                     'gdce',
                     'aton',
                     'qrdi')
-# результат: 'icantforgetiddqd'
-
-    cipher_grille = rotator_plus90(cipher_grille)
-    print(cipher_grille)
     
-    #clear_text = decryptor(crypted_text, cipher_grille)
-    #print(clear_text)
+    clear_text = decrypt(crypted_text, cipher_grille)
+    print(clear_text)
 
 if __name__ == '__main__':
     main()
