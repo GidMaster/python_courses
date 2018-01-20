@@ -3,22 +3,22 @@ Cipher
 """
 
 def rotate_plus90(grille):
-    grille_90 = tuple(zip(*grille[::-1]))
-    grille_as_string = tuple(''.join(row) for row in grille_90 )
+    grille_90 = zip(*grille[::-1])
+    grille_as_string = [''.join(row) for row in grille_90]
     return grille_as_string
 
 def decrypt(crypted_text, cipher_grille):
-    cleartext = ''
+    decrypted_text = ''
     for i in range(4):
         crypted_row = ''
         cipher_row = ''
         crypted_row = crypted_row.join(crypted_text)
         cipher_row  = cipher_row.join(cipher_grille)
-        zipped_row = tuple(zip(cipher_row, crypted_row))
-        part_clear_text = (element[1] for element in zipped_row if element[0] is 'X')
-        cleartext += ''.join(part_clear_text)
+        zipped_row = zip(cipher_row, crypted_row)
+        part_clear_text = (text_cell for cipher_cell, text_cell in zipped_row if cipher_cell == 'X')
+        decrypted_text += ''.join(part_clear_text)
         cipher_grille = rotate_plus90(cipher_grille)
-    return cleartext
+    return decrypted_text
 
 def main():
     cipher_grille = ('X...',
